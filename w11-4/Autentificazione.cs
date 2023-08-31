@@ -49,7 +49,7 @@ namespace w11_4
                     Console.WriteLine("Inserisci confermapassword");
                     string confermaPassword = Console.ReadLine();
                     UtenteLogin = true;
-                    if (password == confermaPassword)
+                    if ( username != null && password == confermaPassword)
                     {
                         DateTime date = DateTime.Now;
 
@@ -64,11 +64,13 @@ namespace w11_4
                         Console.WriteLine("Password e confermapassword non concidono riprovare");
                     }
                 }
-
+                else
+                {
+                    Console.WriteLine("Hai gia effetuato il login");
+                }
 
                 Menu();
             }
-
             else if (scelta == 2)
             {
                 if (UtenteLogin == true)
@@ -95,7 +97,7 @@ namespace w11_4
                 }
                 else
                 {
-                    Console.WriteLine("L'Utente è recentemente loggato");
+                    Console.WriteLine("Nessun utente loggato");
             
                 }
                
@@ -105,17 +107,12 @@ namespace w11_4
             }
             else if (scelta == 4)
             {
-                if (UtenteLogin == true)
-                {
+               
                     for (int i = 0; i < VerificaLogin.Count; i++)
                     {
                     Console.WriteLine($"{Username} ha effettuato l'accesso il " + VerificaLogin[i]);
                     }
-                }
-                else
-                {
-                    Console.WriteLine("L'utente non ha ancora effettuato login");
-                }
+               
                 
                 Menu();
             }
@@ -124,6 +121,11 @@ namespace w11_4
 
                 Console.WriteLine("Chiusura programma in corso");
                 Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Errore nessuna operazione scleta");
+                Menu();
             }
 
         }
